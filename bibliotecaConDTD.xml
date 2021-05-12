@@ -92,7 +92,7 @@
 
     </revistas>
 
-<!--
+
     <periodicos>
         <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="21/07/2020">
             <secciones>
@@ -174,7 +174,7 @@
             </secciones>
         </periodico>
     </periodicos>
--->
+
 </biblioteca>
 
 <!-- ==================== REVISTA ====================
