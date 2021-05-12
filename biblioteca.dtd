@@ -1,11 +1,12 @@
 <!ELEMENT biblioteca (libros, revistas, periodicos)>
+
+
+<!-- ZONA LIBROS -->
 <!ELEMENT libros (libro*)>
 <!ELEMENT libro (titulo, indice, capitulos, sinopsis)>
 <!ATTLIST libro id ID #REQUIRED 
                 tipo_clase (novela|infantil|didactico) #REQUIRED 
                 numero_paginas CDATA #REQUIRED>
-<!ELEMENT titulo (#PCDATA)>
-<!ELEMENT indice (#PCDATA)> <!-- Etiqueta común para libros y revistas -->
 <!ELEMENT capitulos (capitulo+)>
 <!ELEMENT capitulo (contenido_libro)>
 <!ATTLIST capitulo numero_paginas CDATA #REQUIRED>
@@ -13,19 +14,22 @@
 <!ATTLIST contenido_libro enlace CDATA #REQUIRED>
 <!ELEMENT sinopsis (#PCDATA)>
 
+
+<!-- ZONA REVISTAS -->
 <!ELEMENT revistas (revista*)>
 <!ELEMENT revista (titulo, numero_revista, indice, secciones)>
-<!ATTLIST revista id ID #REQUIRED
-                  tipo_clase (informatica|corazon|investigacion|coches|otros)
-                  numero_paginas CDATA #REQUIRED>
-<!ELEMENT titulo (#PCDATA)>
+
+<!ATTLIST revista id ID #REQUIRED 
+                    tipo_clase (informatica|corazon|investigacion|coches|otros) #REQUIRED 
+                    numero_paginas CDATA #REQUIRED >
 <!ELEMENT numero_revista (#PCDATA)>
 <!ELEMENT secciones (seccion_revista+|seccion_periodico+)>
-<!ELEMENT seccion_revista (contenido)>
+<!ELEMENT seccion_revista (contenido_revista)>
 <!ATTLIST seccion_revista numero_paginas CDATA #REQUIRED>
 <!ELEMENT contenido_revista EMPTY>
 <!ATTLIST contenido_revista enlace CDATA #REQUIRED>
 
+<!-- ZONA PERIÓDICOS -->
 <!ELEMENT periodicos (periodico*)>
 <!ELEMENT periodico (secciones)>
 <!ATTLIST periodico id ID #REQUIRED 
@@ -39,8 +43,6 @@
 <!ATTLIST articulo autor CDATA #REQUIRED>
 
 
-
-
-<!-- En el elemento raíz "biblioteca" consideramos la opción de
-añadir un interrogante al final de la sentencia, para que las secciones
-pudiesen estar o no presentes. -->
+<!-- ZONA COMÚN -->
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT indice (#PCDATA)>

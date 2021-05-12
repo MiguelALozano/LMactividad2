@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE biblioteca SYSTEM "biblio.dtd">
+<!DOCTYPE biblioteca SYSTEM "biblioteca.dtd">
 
 <biblioteca>
+    
     <libros>
         <libro id="L0001" tipo_clase="novela" numero_paginas="205">
             <titulo>Patata</titulo>
@@ -36,7 +37,7 @@
             <sinopsis>La enciclopedia preferida de estas dos.</sinopsis>
         </libro>
     </libros>
-
+    
     <revistas>
         <revista id="R0001" tipo_clase="informatica" numero_paginas="50">
             <titulo>Disco Duro</titulo>
@@ -88,8 +89,10 @@
                 </seccion_revista>
             </secciones>
         </revista>
+
     </revistas>
 
+<!--
     <periodicos>
         <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="21/07/2020">
             <secciones>
@@ -171,7 +174,7 @@
             </secciones>
         </periodico>
     </periodicos>
-
+-->
 </biblioteca>
 
 <!-- ==================== REVISTA ====================
