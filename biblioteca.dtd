@@ -1,0 +1,46 @@
+<!ELEMENT biblioteca (libros, revistas, periodicos)>
+<!ELEMENT libros (libro*)>
+<!ELEMENT libro (titulo, indice, capitulos, sinopsis)>
+<!ATTLIST libro id ID #REQUIRED 
+                tipo_clase (novela|infantil|didactico) #REQUIRED 
+                numero_paginas CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT indice (#PCDATA)> <!-- Etiqueta común para libros y revistas -->
+<!ELEMENT capitulos (capitulo+)>
+<!ELEMENT capitulo (contenido_libro)>
+<!ATTLIST capitulo numero_paginas CDATA #REQUIRED>
+<!ELEMENT contenido_libro EMPTY>
+<!ATTLIST contenido_libro enlace CDATA #REQUIRED>
+<!ELEMENT sinopsis (#PCDATA)>
+
+<!ELEMENT revistas (revista*)>
+<!ELEMENT revista (titulo, numero_revista, indice, secciones)>
+<!ATTLIST revista id ID #REQUIRED
+                  tipo_clase (informatica|corazon|investigacion|coches|otros)
+                  numero_paginas CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT numero_revista (#PCDATA)>
+<!ELEMENT secciones (seccion_revista+|seccion_periodico+)>
+<!ELEMENT seccion_revista (contenido)>
+<!ATTLIST seccion_revista numero_paginas CDATA #REQUIRED>
+<!ELEMENT contenido_revista EMPTY>
+<!ATTLIST contenido_revista enlace CDATA #REQUIRED>
+
+<!ELEMENT periodicos (periodico*)>
+<!ELEMENT periodico (secciones)>
+<!ATTLIST periodico id ID #REQUIRED 
+                    tipo_clase (nacional|internacional) #REQUIRED 
+                    fecha_publicacion CDATA #REQUIRED>
+<!ATTLIST seccion_periodico tipo_seccion (economica|opinion|deportes|nacional|internacional) #REQUIRED>
+<!ELEMENT seccion_periodico (articulos+)>
+<!ELEMENT articulos (articulo+)>
+<!ELEMENT articulo (contenido_articulo)>
+<!ELEMENT contenido_articulo (#PCDATA)>
+<!ATTLIST articulo autor CDATA #REQUIRED>
+
+
+
+
+<!-- En el elemento raíz "biblioteca" consideramos la opción de
+añadir un interrogante al final de la sentencia, para que las secciones
+pudiesen estar o no presentes. -->
