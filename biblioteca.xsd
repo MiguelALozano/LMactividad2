@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <annotation>
+        <documentation>
+            Esquema que marca la estructura de la biblioteca de Territorio_Web
+         </documentation>
+    </annotation>
+    <!-- El nodo raiz se llama biblioteca-->
+    <element name="biblioteca">
+        <complexType>
+            <sequence>
+                <!-- Sobra el minOccurs? -->
+                <!-- ZONA LIBROS -->
+                <element name="libros" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element name="libro" minOccurs="1" maxOccurs="unbounded">
+                                <complexType>
+                                    <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                    <sequence>
+                                        <element name="titulo" type="string" />
+                                        <element name="indice" type="string" />
+                                        <element name="capitulos">
+                                            <complexType>
+                                                <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                                <sequence>
+                                                    <element name="capitulo" minOccurs="1" maxOccurs="unbounded">
+                                                        <complexType>
+                                                            <sequence>
+                                                                <!-- PONER QUE EL ELEMENTO VA VACÍO -->
+                                                                <element name="contenido_libro">
+                                                                    <!-- OJO: NECESITAMOS COMPLEXTYPE PARA METER UN ATRIBUTO -->
+                                                                    <complexType>
+                                                                        <attribute name="enlace" type="anyURI" use="required"></attribute>
+                                                                    </complexType>
+                                                                </element>
+                                                            </sequence>
+                                                            <attribute name="numero_paginas" use="required">
+                                                                <simpleType>
+                                                                    <restriction base="integer">
+                                                                        <minInclusive value="1"></minInclusive>
+                                                                        <maxInclusive value="99999"></maxInclusive>
+                                                                    </restriction>
+                                                                </simpleType>
+                                                            </attribute>
+                                                        </complexType>
+                                                    </element>
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+                                        <element name="sinopsis" type="string" />
+                                    </sequence>
+                                    <!-- FALTA EXPRESIÓN REGULAR -->
+                                    <attribute name="id" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <pattern value="[L]{1}[0-9]{4}"></pattern>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="tipo_clase" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <enumeration value="novela"></enumeration>
+                                                <enumeration value="infantil"></enumeration>
+                                                <enumeration value="didactico"></enumeration>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="numero_paginas" use="required">
+                                        <simpleType>
+                                            <restriction base="integer">
+                                                <minInclusive value="1"></minInclusive>
+                                                <maxInclusive value="99999"></maxInclusive>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+
+                <!-- ZONA REVISTAS -->
+                <element name="revistas" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element name="revista" minOccurs="1" maxOccurs="unbounded">
+                                <complexType>
+                                    <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                    <sequence>
+                                        <element name="titulo" type="string" />
+                                        <element name="numero_revista">
+                                            <simpleType>
+                                                <restriction base="integer">
+                                                    <minInclusive value="1"></minInclusive>
+                                                    <maxInclusive value="99999"></maxInclusive>
+                                                </restriction>
+                                            </simpleType>
+                                        </element>
+                                        <element name="indice" type="string" />
+                                        <element name="secciones">
+                                            <complexType>
+                                                <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                                <sequence>
+                                                    <element name="seccion_revista" minOccurs="1" maxOccurs="unbounded">
+                                                        <complexType>
+                                                            <sequence>
+                                                                <element name="contenido_revista">
+                                                                    <!-- OJO: NECESITAMOS COMPLEXTYPE PARA METER UN ATRIBUTO -->
+                                                                    <complexType>
+                                                                        <attribute name="enlace" type="anyURI" use="required"></attribute>
+                                                                    </complexType>
+                                                                </element>
+                                                            </sequence>
+                                                            <attribute name="numero_paginas" use="required">
+                                                                <simpleType>
+                                                                    <restriction base="integer">
+                                                                        <minInclusive value="1"></minInclusive>
+                                                                        <maxInclusive value="99999"></maxInclusive>
+                                                                    </restriction>
+                                                                </simpleType>
+                                                            </attribute>
+                                                        </complexType>
+                                                    </element>
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+                                    </sequence>
+                                    <attribute name="id" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <pattern value="[R]{1}[0-9]{4}"></pattern>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="tipo_clase" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <enumeration value="informatica"></enumeration>
+                                                <enumeration value="corazon"></enumeration>
+                                                <enumeration value="investigacion"></enumeration>
+                                                <enumeration value="coches"></enumeration>
+                                                <enumeration value="otros"></enumeration>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="numero_paginas" use="required">
+                                        <simpleType>
+                                            <restriction base="integer">
+                                                <minInclusive value="1"></minInclusive>
+                                                <maxInclusive value="99999"></maxInclusive>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+
+                <!-- ZONA PERIÓDICOS -->
+                <element name="periodicos" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element name="periodico" minOccurs="1" maxOccurs="unbounded">
+                                <complexType>
+                                    <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                    <sequence>
+                                        <element name="indice" type="string" />
+                                        <element name="secciones">
+                                            <complexType>
+                                                <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                                <sequence>
+                                                    <element name="seccion_periodico" minOccurs="1" maxOccurs="unbounded">
+                                                        <complexType>
+                                                            <sequence>
+                                                                <element name="articulos">
+                                                                    <complexType>
+                                                                        <sequence>
+                                                                            <element name="articulo" minOccurs="1">
+                                                                                <complexType>
+                                                                                    <sequence>
+                                                                                        <element name="contenido_articulo">
+                                                                                            <!-- OJO: NECESITAMOS COMPLEXTYPE PARA METER UN ATRIBUTO -->
+                                                                                            <complexType>
+                                                                                                <attribute name="enlace" type="anyURI" use="required"></attribute>
+                                                                                            </complexType>
+                                                                                        </element>
+                                                                                    </sequence>
+                                                                                    <attribute name="autor" type="string" use="required"></attribute>
+                                                                                </complexType>
+                                                                            </element>
+                                                                        </sequence>
+                                                                    </complexType>
+                                                                </element>
+                                                            </sequence>
+                                                            <attribute name="tipo_seccion_periodico" use="required">
+                                                                <simpleType>
+                                                                    <restriction base="string">
+                                                                        <enumeration value="economica"></enumeration>
+                                                                        <enumeration value="opinion"></enumeration>
+                                                                        <enumeration value="deportes"></enumeration>
+                                                                        <enumeration value="nacional"></enumeration>
+                                                                        <enumeration value="internacional"></enumeration>
+                                                                    </restriction>
+                                                                </simpleType>
+                                                            </attribute>
+                                                        </complexType>
+                                                    </element>
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+                                    </sequence>
+                                    <attribute name="id" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <pattern value="[P]{1}[0-9]{4}"></pattern>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="tipo_clase" use="required">
+                                        <simpleType>
+                                            <restriction base="string">
+                                                <enumeration value="nacional"></enumeration>
+                                                <enumeration value="internacional"></enumeration>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
+                                    <attribute name="fecha_publicacion" type="date" use="required"></attribute>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

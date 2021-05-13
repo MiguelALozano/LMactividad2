@@ -31,16 +31,18 @@
 
 <!-- ZONA PERIÓDICOS -->
 <!ELEMENT periodicos (periodico*)>
-<!ELEMENT periodico (secciones)>
+<!ELEMENT periodico (indice,secciones)>
 <!ATTLIST periodico id ID #REQUIRED 
                     tipo_clase (nacional|internacional) #REQUIRED 
                     fecha_publicacion CDATA #REQUIRED>
-<!ATTLIST seccion_periodico tipo_seccion (economica|opinion|deportes|nacional|internacional) #REQUIRED>
+<!ATTLIST seccion_periodico tipo_seccion_periodico (economica|opinion|deportes|nacional|internacional) #REQUIRED>
 <!ELEMENT seccion_periodico (articulos+)>
 <!ELEMENT articulos (articulo+)>
 <!ELEMENT articulo (contenido_articulo)>
-<!ELEMENT contenido_articulo (#PCDATA)>
 <!ATTLIST articulo autor CDATA #REQUIRED>
+<!ELEMENT contenido_articulo EMPTY>
+<!ATTLIST contenido_articulo enlace CDATA #REQUIRED>
+
 
 
 <!-- ZONA COMÚN -->
