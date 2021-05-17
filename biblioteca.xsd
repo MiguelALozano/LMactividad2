@@ -198,23 +198,34 @@
 
                 <!-- ZONA PERIÓDICOS -->
                 <xs:element name="periodicos">
+                    <!-- Realizamos un tipo complejo  -->
                     <xs:complexType>
+                        <!-- Tendremos una secuencia con un único elemento, que será mínimo 0 y máximo sin límite -->
                         <xs:sequence>
+                            <!-- Tendremos entre 0 e infinitos elementos periódico -->
                             <xs:element name="periodico" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                     <xs:sequence>
+                                        <!-- Dentro de cada periodico tendremos solamente 2 elementos: indice y secciones -->
                                         <xs:element name="indice" type="xs:string" />
+                                        <!-- Secciones será un tipo complejo, que dentro contendrá una secuencia de elementos
+                                            seccion_periodico, que a su vez contendrá una elemento artículos, dentro del cual habrá
+                                            una  secuencia de elementos artículo (con atributo autor), dentro de los cuales
+                                            tendremos a su vez un elemento contenido_articulo con un atributo enlace -->
                                         <xs:element name="secciones">
                                             <xs:complexType>
                                                 <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                                 <xs:sequence>
+                                                    <!-- Habrá un mínimo de 1 sección en cada periódico -->
                                                     <xs:element name="seccion_periodico" minOccurs="1" maxOccurs="unbounded">
                                                         <xs:complexType>
                                                             <xs:sequence>
                                                                 <xs:element name="articulos">
                                                                     <xs:complexType>
                                                                         <xs:sequence>
+                                                                            <!-- Puede haber entre 1 e infinitos artículos dentro de cada elemento
+                                                                                artículos de cada sección -->
                                                                             <xs:element name="articulo" minOccurs="1" maxOccurs="unbounded">
                                                                                 <xs:complexType>
                                                                                     <xs:sequence>
@@ -232,6 +243,8 @@
                                                                     </xs:complexType>
                                                                 </xs:element>
                                                             </xs:sequence>
+                                                            <!-- Cada sección periódico tendrá un atributo tipo, que tendrá una restricción
+                                                                de base string con 5 valores posibles -->
                                                             <xs:attribute name="tipo_seccion_periodico" use="required">
                                                                 <xs:simpleType>
                                                                     <xs:restriction base="xs:string">
@@ -249,6 +262,8 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
+                                    <!-- Tendremos id y tipo_clase análogos a los presentados anteriormente, como
+                                        atributos -->
                                     <xs:attribute name="id" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
@@ -264,6 +279,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                    <!-- Además de un último atributo llamado fecha_publicacion de tipo date, y uso required -->
                                     <xs:attribute name="fecha_publicacion" type="xs:date" use="required"></xs:attribute>
                                 </xs:complexType>
                             </xs:element>
