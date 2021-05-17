@@ -12,6 +12,8 @@
             <!-- Tendremos una secuencia de 3 elementos 
             al poner sequence, no hace falta poner required en los elementos de dentro -->
             <xs:sequence>
+
+
                 <!-- ZONA LIBROS -->
                 <xs:element name="libros">
                     <!-- Realizamos un tipo complejo  -->
@@ -22,7 +24,7 @@
                                 <!-- Realizamos un tipo complejo -->
                                 <xs:complexType>
                                     <!-- Tenemos sequence, es decir, es obligatorio que tenga título,
-                                    índice, capítulos, sinopsis -->
+                                    índice, capítulos, sinopsis -en ese orden- -->
                                     <xs:sequence>
                                         <!-- Tendremos título, índice y sinopsis de tipo string -->
                                         <xs:element name="titulo" type="xs:string" />
@@ -102,15 +104,23 @@
                     </xs:complexType>
                 </xs:element>
 
+
                 <!-- ZONA REVISTAS -->
                 <xs:element name="revistas">
+                    <!-- Realizamos un tipo complejo  -->
                     <xs:complexType>
+                        <!-- Tendremos una secuencia con un único elemento, que será mínimo 0 y máximo sin límite -->
                         <xs:sequence>
                             <xs:element name="revista" minOccurs="0" maxOccurs="unbounded">
+                                <!-- Realizamos un tipo complejo -->
                                 <xs:complexType>
-                                    <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                    <!-- Tenemos sequence, es decir, es obligatorio que tenga título,
+                                    numero_revista, índice y secciones -en ese orden- -->
                                     <xs:sequence>
+                                        <!-- Tendremos título e índice de tipo string -->
                                         <xs:element name="titulo" type="xs:string" />
+                                        <!-- numero_revista tiene como restricción una análoga a la de
+                                            numero_paginas, es decir, base integer, con valores entre 1 y 99999 -->
                                         <xs:element name="numero_revista">
                                             <xs:simpleType>
                                                 <xs:restriction base="xs:integer">
@@ -124,7 +134,11 @@
                                             <xs:complexType>
                                                 <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                                 <xs:sequence>
+                                                    <!-- Puede haber mínimo 1 sección, máximo sin límite -->
                                                     <xs:element name="seccion_revista" minOccurs="1" maxOccurs="unbounded">
+                                                        <!--Cada sección un tipo complejo con un elemento complejo qye contendrá
+                                                            el propio contenido, teniendo por atributo numero_paginas, así como
+                                                            un elemento enlace (tipo URL) -->
                                                         <xs:complexType>
                                                             <xs:sequence>
                                                                 <xs:element name="contenido_revista">
@@ -148,6 +162,8 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
+                                    <!-- Los atributos son análogos a los de libro, con la salvedad del pattern
+                                        con R en vez de L, y los distintos value aceptados en tipo_clase -->
                                     <xs:attribute name="id" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
