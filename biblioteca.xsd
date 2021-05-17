@@ -7,36 +7,51 @@
     </xs:annotation>
     <!-- El nodo raiz se llama biblioteca-->
     <xs:element name="biblioteca">
+        <!-- Realizamos un tipo complejo  -->
         <xs:complexType>
+            <!-- Tendremos una secuencia de 3 elementos 
+            al poner sequence, no hace falta poner required en los elementos de dentro -->
             <xs:sequence>
-                <!-- Sobra el minOccurs? -->
                 <!-- ZONA LIBROS -->
                 <xs:element name="libros">
+                    <!-- Realizamos un tipo complejo  -->
                     <xs:complexType>
+                        <!-- Tendremos una secuencia con un único elemento, que será mínimo 0 y máximo sin límite -->
                         <xs:sequence>
                             <xs:element name="libro" minOccurs="0" maxOccurs="unbounded">
+                                <!-- Realizamos un tipo complejo -->
                                 <xs:complexType>
-                                    <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
+                                    <!-- Tenemos sequence, es decir, es obligatorio que tenga título,
+                                    índice, capítulos, sinopsis -->
                                     <xs:sequence>
+                                        <!-- Tendremos título, índice y sinopsis de tipo string -->
                                         <xs:element name="titulo" type="xs:string" />
                                         <xs:element name="indice" type="xs:string" />
+                                        <!-- Tenemos un elemento capítulos complejo, que dentro
+                                        tendrá una secuencia de elementos capítulo -->
                                         <xs:element name="capitulos">
                                             <xs:complexType>
-                                                <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                                 <xs:sequence>
+                                                    <!-- Puede haber mínimo 1 capítulo, máximo sin límite -->
                                                     <xs:element name="capitulo" minOccurs="1" maxOccurs="unbounded">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <!-- PONER QUE EL ELEMENTO VA VACÍO -->
+                                                                <!-- El elemento contenido_libro será complejo, ya que es necesario
+                                                                    para indicar el atributo.
+                                                                    Sin embargo, no tendremos sequence o similares al no haber elementos -->
                                                                 <xs:element name="contenido_libro">
-                                                                    <!-- OJO: NECESITAMOS COMPLEXTYPE PARA METER UN ATRIBUTO -->
                                                                     <xs:complexType>
+                                                                        <!-- Indicamos que será una url y será required -->
                                                                         <xs:attribute name="enlace" type="xs:anyURI" use="required"></xs:attribute>
                                                                     </xs:complexType>
                                                                 </xs:element>
                                                             </xs:sequence>
+                                                            <!-- Como atríbuto de capítulo tendremos número de páginas que será required -->
                                                             <xs:attribute name="numero_paginas" use="required">
+                                                                <!-- Indicamos simpleType para poder indicar luego una restricción -->
                                                                 <xs:simpleType>
+                                                                    <!-- Tenemos una restricción de base integer, que comprenderá entre 1 y 99999
+                                                                        ambos inclusive -->
                                                                     <xs:restriction base="xs:integer">
                                                                         <xs:minInclusive value="1"></xs:minInclusive>
                                                                         <xs:maxInclusive value="99999"></xs:maxInclusive>
@@ -50,6 +65,10 @@
                                         </xs:element>
                                         <xs:element name="sinopsis" type="xs:string" />
                                     </xs:sequence>
+
+                                    <!-- Como atributos tendremos 3: id, tipo_clase y numero paginas -->
+                                    <!-- El id será required, tendrá una restricción de base String
+                                        con un pattern de Lccc donde c es cualquier número entre 0-9 -->
                                     <xs:attribute name="id" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
@@ -57,6 +76,8 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                    <!-- tipo_clase tendrá default en vez de required, que será novela,
+                                    y como restricción tendremos una enumeración de 3 elementos -->
                                     <xs:attribute name="tipo_clase" default="novela">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
@@ -66,6 +87,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                    <!-- El atributo numero_paginas será análogo al de capítulo -->
                                     <xs:attribute name="numero_paginas" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:integer">
