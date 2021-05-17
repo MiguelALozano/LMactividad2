@@ -1,12 +1,12 @@
-<!ELEMENT biblioteca (libros, revistas, periodicos)>
+<!ELEMENT biblioteca (libros, revistas, periodicos)> <!-- Tipos de documentos almacenados en la biblioteca -->
 
 
 <!-- ZONA LIBROS -->
-<!ELEMENT libros (libro*)>
-<!ELEMENT libro (titulo, indice, capitulos, sinopsis)>
+<!ELEMENT libros (libro*)> <!-- Decidimos que de este elemento podemos tener entre 0 y muchos -->
+<!ELEMENT libro (titulo, indice, capitulos, sinopsis)> <!-- Elementos hijos de libro -->
 <!ATTLIST libro id ID #REQUIRED 
                 tipo_clase (novela|infantil|didactico) #REQUIRED 
-                numero_paginas CDATA #REQUIRED>
+                numero_paginas CDATA #REQUIRED> <!-- atributos de libro, id de la c-->
 <!ELEMENT capitulos (capitulo+)>
 <!ELEMENT capitulo (contenido_libro)>
 <!ATTLIST capitulo numero_paginas CDATA #REQUIRED>

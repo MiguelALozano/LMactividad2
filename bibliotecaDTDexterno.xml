@@ -3,11 +3,12 @@
 
 <biblioteca>
     
+    <!-- ZONA LIBROS -->
     <libros>
-        <libro id="L0001" tipo_clase="novela" numero_paginas="205">
+        <libro id="L0001" tipo_clase="novela" numero_paginas="205"> <!-- Elemento libro con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y número de páginas -->
             <titulo>Patata</titulo>
             <indice>Índice</indice>
-            <capitulos>
+            <capitulos> 
                 <capitulo numero_paginas="20">
                     <contenido_libro enlace="https://www.patata.com"></contenido_libro>
                 </capitulo>
@@ -40,7 +41,7 @@
 
     <!-- ZONA REVISTAS -->
     <revistas>
-        <revista id="R0001" tipo_clase="informatica" numero_paginas="50">
+        <revista id="R0001" tipo_clase="informatica" numero_paginas="50"> <!-- Elemento Revista con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y número de páginas -->
             <titulo>Disco Duro</titulo>
             <numero_revista>107</numero_revista>
             <indice>Índice</indice>
@@ -94,7 +95,7 @@
 
     <!-- ZONA PERIÓDICOS -->
     <periodicos>
-        <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="2020-07-21">
+        <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="2020-07-21"> <!-- Elemento Periódico con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y su fecha de publicación -->
             <indice>Índice</indice>
             <secciones>
                 <seccion_periodico tipo_seccion_periodico="economica">
