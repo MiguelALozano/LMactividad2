@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <biblioteca xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="biblioteca.xsd">
+    <!-- elemento raiz -->
+    <!-- Dentro del elemento raíz, se crean las ramas libros, revistas y periodicos que seran las contenedoras de cada libro, revista y periodico que posea la biblioteca, siguiendo las expecificaciones que dicta el XSD para que además de bien formado, sea válido el documento -->
+    <!-- ZONA LIBROS Recoge todos los libros que contiene la biblioteca -->
     <libros>
         <libro id="L0001" numero_paginas="205">
             <titulo>Patata</titulo>
@@ -35,7 +38,7 @@
         </libro>
     </libros>
 
-    <!-- ZONA REVISTAS -->
+    <!-- ZONA REVISTAS contiene todas las revistas de la biblioteca -->
     <revistas>
         <revista id="R0001" tipo_clase="informatica" numero_paginas="50">
             <titulo>Disco Duro</titulo>
@@ -89,7 +92,7 @@
         </revista>
     </revistas>
 
-    <!-- ZONA PERIÓDICOS -->
+    <!-- ZONA PERIÓDICOS Contiene todos los periodicos de la biblioteca -->
     <periodicos>
         <periodico id="P0001" fecha_publicacion="2020-07-21">
             <indice>Índice</indice>
