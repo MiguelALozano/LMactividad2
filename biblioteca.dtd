@@ -5,45 +5,52 @@
 <!ELEMENT libros (libro*)> <!-- Decidimos que de este elemento podemos tener entre 0 y muchos -->
 <!ELEMENT libro (titulo, indice, capitulos, sinopsis)> <!-- Elementos hijos de libro -->
 <!ATTLIST libro id ID #REQUIRED 
-                tipo_clase (novela|infantil|didactico) #REQUIRED 
+                tipo_clase (novela|infantil|didactico) "novela" 
                 numero_paginas CDATA #REQUIRED> <!-- atributos de libro, id de la c-->
-<!ELEMENT capitulos (capitulo+)>
-<!ELEMENT capitulo (contenido_libro)>
-<!ATTLIST capitulo numero_paginas CDATA #REQUIRED>
-<!ELEMENT contenido_libro EMPTY>
+<!ELEMENT capitulos (capitulo+)> <!-- capítulos contiene al menos 1 capitulo -->
+<!ELEMENT capitulo (contenido_libro)> <!-- A su vez capitulo tiene un elemento hijo que es el contenido del capitulo-->
+<!ATTLIST capitulo numero_paginas CDATA #REQUIRED> <!-- Atributo para capitulo, que recoge el número de páginas del mismo-->
+<!-- El elemento contenido_libro se declara como vacio, ya que no tiene ningún texto ni elemento en su interior.
+     A dicho contenido se accede a través del atributo enlace -->
+<!ELEMENT contenido_libro EMPTY> 
 <!ATTLIST contenido_libro enlace CDATA #REQUIRED>
-<!ELEMENT sinopsis (#PCDATA)>
+<!ELEMENT sinopsis (#PCDATA)> <!-- El elemento sipnosis es de tipo texto y recoge un resumen del libro -->
 
 
 <!-- ZONA REVISTAS -->
-<!ELEMENT revistas (revista*)>
-<!ELEMENT revista (titulo, numero_revista, indice, secciones)>
-
+<!ELEMENT revistas (revista*)> <!-- revistas tiene un elemento revista con una cardinalidad de 0 a n -->
+<!-- El elemento revista tiene los elementos hijos: titulo, numero_revista, indice y secciones. 
+     A su vez se declaran los atributos de revista que identifican su ID, el tipo de clase y el número de páginas de cada revista-->
+<!ELEMENT revista (titulo, numero_revista, indice, secciones)> 
 <!ATTLIST revista id ID #REQUIRED 
-                    tipo_clase (informatica|corazon|investigacion|coches|otros) #REQUIRED 
+                    tipo_clase (informatica|corazon|investigacion|coches|otros) "otros" 
                     numero_paginas CDATA #REQUIRED >
-<!ELEMENT numero_revista (#PCDATA)>
+<!ELEMENT numero_revista (#PCDATA)> <!-- Elemento que recoge el número de edición de la revista, se trata como #PCDATA -->
+<!-- El elemento secciones incluye los elementos hijos: seccion revista o seccion periodico, ya que es común a ambas etiquetas y dentro de secciones podrá haber al menos una de cada en su correspondiente seccion -->
 <!ELEMENT secciones (seccion_revista+|seccion_periodico+)>
+<!-- seccion revista, contiene como elemento hijo contenido_revista, que es un elemento vacio donde el contenido es accesible a través del enlace que se declara como atributo. A su vez, sección revista tiene el atributo numero_paginas que recoge el número de paginas de cada seccion. -->
 <!ELEMENT seccion_revista (contenido_revista)>
 <!ATTLIST seccion_revista numero_paginas CDATA #REQUIRED>
 <!ELEMENT contenido_revista EMPTY>
 <!ATTLIST contenido_revista enlace CDATA #REQUIRED>
 
 <!-- ZONA PERIÓDICOS -->
-<!ELEMENT periodicos (periodico*)>
+<!ELEMENT periodicos (periodico*)> <!-- Periodicos contiene periodico con una cardinalidad de 0 a n -->
+<!-- El elemento periodico contiene los elementos hijos: indice y secciones. A su vez se le declaran los atributos ID, tipo_clase y fecha_publicacion-->
 <!ELEMENT periodico (indice,secciones)>
 <!ATTLIST periodico id ID #REQUIRED 
-                    tipo_clase (nacional|internacional) #REQUIRED 
+                    tipo_clase (nacional|internacional) "nacional" 
                     fecha_publicacion CDATA #REQUIRED>
+<!-- El elemento seccion periodico incluye el elemento articulos que a su vez contendrá el articulo en cardinalidad 1 a n. seccion_periodico contendrá el atributo tipo_seccion_periodico en el que se requiere el tipo de seccion de forma obligatoria. -->
 <!ATTLIST seccion_periodico tipo_seccion_periodico (economica|opinion|deportes|nacional|internacional) #REQUIRED>
-<!ELEMENT seccion_periodico (articulos+)>
+<!ELEMENT seccion_periodico (articulos)>
 <!ELEMENT articulos (articulo+)>
+<!-- El elemento articulo contiene el elemento contenido_articulo que es un elemento contenido_articulo vacio, ya que el contenido se ofrece a través del atributo enlace.
+A su vez articulo tiene el atributo autor, que es de tipo texto y  obligatorio.-->
 <!ELEMENT articulo (contenido_articulo)>
 <!ATTLIST articulo autor CDATA #REQUIRED>
 <!ELEMENT contenido_articulo EMPTY>
 <!ATTLIST contenido_articulo enlace CDATA #REQUIRED>
-
-
 
 <!-- ZONA COMÚN -->
 <!ELEMENT titulo (#PCDATA)>

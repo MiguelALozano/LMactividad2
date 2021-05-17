@@ -179,27 +179,3 @@
     </periodicos>
 
 </biblioteca>
-
-<!-- ==================== REVISTA ====================
- 
-1. Las revistas a su vez son clasificadas en: informática,
-corazón, coches, investigación y otras.
-
-5. De igual forma que en los anteriores, la última etiqueta del
-árbol debe ser el contenido con un atributo que referencia al
-contenido.
--->
-
-
-<!-- ==================== PERIÓDICO ====================
-
-Dentro de los periódicos tenemos secciones y un índice.
-
-Cada sección debe contener un atributo identificativo del
-tipo de sección, que puede ser:
-económica, opinión, deportes, nacional o internacional.
-
-Finalmente, el contenido será el último elemento del árbol,
-que necesita un atributo que referencie a la información.
-
--->
