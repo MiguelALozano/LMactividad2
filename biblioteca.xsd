@@ -11,10 +11,10 @@
             <xs:sequence>
                 <!-- Sobra el minOccurs? -->
                 <!-- ZONA LIBROS -->
-                <xs:element name="libros" minOccurs="0">
+                <xs:element name="libros">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="libro" minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="libro" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                     <xs:sequence>
@@ -50,7 +50,6 @@
                                         </xs:element>
                                         <xs:element name="sinopsis" type="xs:string" />
                                     </xs:sequence>
-                                    <!-- FALTA EXPRESIÓN REGULAR -->
                                     <xs:attribute name="id" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
@@ -58,7 +57,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" use="required">
+                                    <xs:attribute name="tipo_clase" default="novela">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="novela"></xs:enumeration>
@@ -82,10 +81,10 @@
                 </xs:element>
 
                 <!-- ZONA REVISTAS -->
-                <xs:element name="revistas" minOccurs="0">
+                <xs:element name="revistas">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="revista" minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="revista" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                     <xs:sequence>
@@ -134,7 +133,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" use="required">
+                                    <xs:attribute name="tipo_clase" default="otros">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="informatica"></xs:enumeration>
@@ -160,10 +159,10 @@
                 </xs:element>
 
                 <!-- ZONA PERIÓDICOS -->
-                <xs:element name="periodicos" minOccurs="0">
+                <xs:element name="periodicos">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="periodico" minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="periodico" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <!-- Al poner sequence, no hace falta poner required en los elementos de dentro-->
                                     <xs:sequence>
@@ -178,7 +177,7 @@
                                                                 <xs:element name="articulos">
                                                                     <xs:complexType>
                                                                         <xs:sequence>
-                                                                            <xs:element name="articulo" minOccurs="1">
+                                                                            <xs:element name="articulo" minOccurs="1" maxOccurs="unbounded">
                                                                                 <xs:complexType>
                                                                                     <xs:sequence>
                                                                                         <xs:element name="contenido_articulo">
@@ -219,7 +218,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" use="required">
+                                    <xs:attribute name="tipo_clase" default="nacional">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="nacional"></xs:enumeration>
