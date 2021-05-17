@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE biblioteca SYSTEM "biblioteca.dtd">
-
 <biblioteca>
-    
+
+
     <!-- ZONA LIBROS -->
     <libros>
-        <libro id="L0001" tipo_clase="novela" numero_paginas="205"> <!-- Elemento libro con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y número de páginas -->
+        <libro id="L0001" numero_paginas="205">
             <titulo>Patata</titulo>
             <indice>Índice</indice>
-            <capitulos> 
+            <capitulos>
                 <capitulo numero_paginas="20">
                     <contenido_libro enlace="https://www.patata.com"></contenido_libro>
                 </capitulo>
@@ -39,9 +39,10 @@
         </libro>
     </libros>
 
+
     <!-- ZONA REVISTAS -->
     <revistas>
-        <revista id="R0001" tipo_clase="informatica" numero_paginas="50"> <!-- Elemento Revista con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y número de páginas -->
+        <revista id="R0001" tipo_clase="informatica" numero_paginas="50">
             <titulo>Disco Duro</titulo>
             <numero_revista>107</numero_revista>
             <indice>Índice</indice>
@@ -81,7 +82,7 @@
                 </seccion_revista>
             </secciones>
         </revista>
-        <revista id="R0005" tipo_clase="otros" numero_paginas="90">
+        <revista id="R0005" numero_paginas="90">
             <titulo>Coches y motos</titulo>
             <numero_revista>12</numero_revista>
             <indice>Índice</indice>
@@ -93,9 +94,10 @@
         </revista>
     </revistas>
 
+    
     <!-- ZONA PERIÓDICOS -->
     <periodicos>
-        <periodico id="P0001" tipo_clase="nacional" fecha_publicacion="2020-07-21"> <!-- Elemento Periódico con sus atributos: id identificativo e inequívoco, tipo_clase con el que se identifica su género y su fecha de publicación -->
+        <periodico id="P0001" fecha_publicacion="2020-07-21">
             <indice>Índice</indice>
             <secciones>
                 <seccion_periodico tipo_seccion_periodico="economica">
@@ -177,5 +179,4 @@
             </secciones>
         </periodico>
     </periodicos>
-
 </biblioteca>
